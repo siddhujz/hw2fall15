@@ -26,10 +26,23 @@
 
 def palindrome?(str)
   # YOUR CODE HERE
+  str.gsub!(/\W/, '')
+  str.casecmp(str.reverse) == 0
 end
 
 def count_words(str)
   # YOUR CODE HERE
+  str = str.gsub(/[^0-9A-Za-z\s]/, '')
+  my_array = str.downcase.split(/\s+/)
+  my_hash = Hash.new
+  my_array.each do |arr_word|
+    if my_hash.key?(arr_word)
+      my_hash[arr_word] = my_hash[arr_word] + 1
+    else
+      my_hash[arr_word] = 1
+    end
+  end
+  my_hash
 end
 
 
@@ -37,25 +50,25 @@ end
 #You should remove everything below this line prior to submitting your file
 
 
-test_str = "there goes the neighborhood"
+#test_str = "there goes the neighborhood"
 
-if palindrome? test_str
-  puts test_str + " is a palindrome!"
-else
-  puts test_str + " is NOT a palindrome!"
-end
-
-
-test_str = "Madam, I'm Adam"
-
-if palindrome? test_str
-  puts test_str + " is a palindrome!"
-else
-  puts test_str + " is NOT a palindrome!"
-end
+#if palindrome? test_str
+ # puts test_str + " is a palindrome!"
+#else
+ # puts test_str + " is NOT a palindrome!"
+#end
 
 
-test_str = "The rent is due on the first day of the month unless the first day of the month falls on a Saturday or Sunday"
+#test_str = "Madam, I'm Adam"
 
-word_count = count_words test_str
-puts word_count
+#if palindrome? test_str
+ # puts test_str + " is a palindrome!"
+#else
+ # puts test_str + " is NOT a palindrome!"
+#end
+
+
+#test_str = "The rent is due on the first day of the month unless the first day of the month falls on a Saturday or Sunday"
+
+#word_count = count_words test_str
+#puts word_count
